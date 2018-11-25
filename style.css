@@ -1,27 +1,54 @@
+*,
+*::before,
+*:: after {
+  box-sizing: border-box;
+}
+
 body{
   width: 100%;
   height: 100vh;
+
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+
 .grid-container {
-  width: 60%;
-  height: 90%;
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 25% 25% 25% ;
-  background-color: red;
+  max-width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.grid-box {
+.card-box {
+  width: 200px;
+  height: 200px;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  font-size: 30px;
-  text-align: center;
+  background-color: yellow;
+  transition: all 0.5s ease-in;
+  pointer-events: none; */
+
 }
 
-.grid-box:hover {
-  background-color: green;
+  .card-box p {
+  pointer-events: none;
+  opacity: 0;
+  font-size: 50px;
+  transform: rotateX(0deg);
+  transition: all 0.5s ease-in;
+  text-align: center;
+  }
+
+  .card-box img{
+  pointer-events: none;
+  width: 150px;
+  height: 150px;
+  transform: rotateX(0deg);
+  transition: all 0.5s ease-in;
+  opacity: 0;
+  border-radius: 10px;
 }
