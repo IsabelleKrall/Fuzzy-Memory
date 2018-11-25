@@ -1,63 +1,22 @@
+//Function for randomize the cards in card-box:
+var container = document.querySelector('.grid-container')
 
-//card data:
+for (var i = container.children.length; i >= 0; i--) {
+    container.appendChild(container.children[Math.random() * i | 0]);
+}
 
-const cardsArray = [{
-    'name': 'korv',
-    'img': 'pictures/korv.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
+//Make selected cards visable:
+const visable = document.querySelectorAll('.card-box');
 
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-  {
-    'name': 'kringla',
-    'img': 'pictures/kringla.svg',
-  },
-];
+const visableArray = Array.from(visable);
 
+emptyarray = [];
+complete = [];
+counter = 0;
 
-const game = document.getElementById('game');
-
-const grid= document.createElement('section');
-grid.setAttribute('class', 'grid');
-
-game.appendChild(grid);
-
-//get images to display with a forEach loop:
-
-cardsArray.forEach(item => {
-  const card = document.createElement('div');
-
-  card.classList.add('card');
-
-  card.dataset.name = item.name;
-
-  card.style.backgroundImage = `url(${item.img})`;
-
-  grid.appendChild(card); 
-})
+//Show the selected cards when clicking:
+visableArray.forEach( (picture)=> {
+  picture.addEventListener('click', ()=>{
+    picture.classList.add('view-picture')
+  });
+});
