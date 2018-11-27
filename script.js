@@ -75,3 +75,12 @@ gameGrid.forEach(item => {
   card.appendChild(front);
   card.appendChild(back);
 });
+
+
+//Function for matching the cards:
+const match = () => {
+  const selected = document.querySelectorAll('.selected');
+  selected.forEach(card => {
+    card.classList.add('match');
+  });
+};
