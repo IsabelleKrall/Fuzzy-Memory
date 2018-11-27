@@ -45,13 +45,15 @@ const cardsArray = [{
 
 const gameGrid = cardsArray
   .concat(cardsArray)
-    .sort(() => 0.5 - Math.random());
+
+  //Making the cards random:
+  .sort(() => 0.5 - Math.random());
 
   let firstGuess = '';
   let secondGuess = '';
   let count = 0;
   let previousTarget = null;
-  let delay = 1200;
+  let delay = 1000;
 
 
 const game = document.querySelector('.game');
@@ -102,3 +104,40 @@ const resetGuesses = () => {
     card.classList.remove('selected');
   });
 };
+
+
+grid.addEventListener('click', event => {
+
+  const clicked = event.target;
+
+  if (
+    clicked.nodeName === 'SECTION' ||
+    clicked === previousTarget ||
+    clicked.parentNode.classList.contains('selected') ||
+    clicked.parentNode.classList.contains('match')
+  ) {
+    return;
+  }
+
+  if (count < 2) {
+        count++;
+        if (count === 1) {
+          firstGuess = clicked.parentNode.dataset.name;
+          console.log(firstGuess);
+          clicked.parentNode.classList.add('selected');
+        } else {
+          secondGuess = clicked.parentNode.dataset.name;
+          console.log(secondGuess);
+          clicked.parentNode.classList.add('selected');
+          }
+
+    if (firstGuess && secondGuess) {
+      if (firstGuess === secondGuess) {
+        setTimeout(match, delay);
+      }
+      setTimeout(resetGuesses, delay);
+    }
+    previousTarget = clicked;
+  }
+
+});
