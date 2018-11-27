@@ -56,3 +56,11 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.selected {
+  transform: rotateY(180deg);
+}
+
+.match .front {
+  background: yellow!important;
+}
