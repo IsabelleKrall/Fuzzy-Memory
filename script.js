@@ -46,9 +46,31 @@ const cardsArray = [{
 const gameGrid = cardsArray
   .concat(cardsArray)
 
+
 const game = document.querySelector('.game');
 const grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 
 //Adding the grid-section to the game-div:
 game.appendChild(grid);
+
+
+//Adding card, front, back to the game-div:
+gameGrid.forEach(item => {
+  const { name, img } = item;
+
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.name = name;
+
+  const front = document.createElement('div');
+  front.classList.add('front');
+
+  const back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = `url(${img})`;
+
+  grid.appendChild(card);
+  card.appendChild(front);
+  card.appendChild(back);
+});
