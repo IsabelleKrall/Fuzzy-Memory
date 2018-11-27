@@ -47,6 +47,12 @@ const gameGrid = cardsArray
   .concat(cardsArray)
     .sort(() => 0.5 - Math.random());
 
+  let firstGuess = '';
+  let secondGuess = '';
+  let count = 0;
+  let previousTarget = null;
+  let delay = 1200;
+
 
 const game = document.querySelector('.game');
 const grid = document.createElement('section');
@@ -82,5 +88,17 @@ const match = () => {
   const selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.add('match');
+  });
+};
+
+const resetGuesses = () => {
+  firstGuess = '';
+  secondGuess = '';
+  count = 0;
+  previousTarget = null;
+
+  var selected = document.querySelectorAll('.selected');
+  selected.forEach(card => {
+    card.classList.remove('selected');
   });
 };
